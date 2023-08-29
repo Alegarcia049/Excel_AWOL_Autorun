@@ -25,3 +25,14 @@ class SharePoint:
         conn = self._auth()
         target_folder_url = f'{SHAREPOINT_DOC}/{folder_name}'
         root_folder = conn.web.get_folder_by
+        root_folder.expand(["Files", "Folders"]).get().execute.query()
+        return root_folder.files
+    
+    def download_file(self, file_name, folder_name):
+        conn = self._auth()
+        file_url = f"/sites/{SHAREPOINT_SITE_NAME}/{SHAREPOINT_DOC}"
+        file = File.open_binary(conn, file_url)
+        return file 
+    
+    def download_files(self, folder_name):
+        return self._get_files_list(folder_name)
