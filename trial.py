@@ -43,7 +43,7 @@ primera_fila = primera_celda[0] + 1
 rango_celdas = df.loc[primera_fila:ultima_celda, columna]
 
 # Guarda los datos en un archivo de texto
-rango_celdas.to_csv('datos.txt', index=False, header=False)
+rango_celdas.to_csv('datos.csv', index=False, header=False)
 
 # Imprime un mensaje de confirmación
 print('Los datos se han guardado correctamente en el archivo datos.txt')
